@@ -75,7 +75,7 @@ const MobileNav = ({ isOpen, onClose }: MobileNavProps) => {
   return (
     <div
       className={cn(
-        'fixed top-0 left-0 bg-white h-screen w-screen flex flex-col transition duration-300 ease-in-out',
+        'fixed z-50 top-0 left-0 bg-white h-screen w-screen flex flex-col transition duration-300 ease-in-out',
         isOpen ? 'translate-x-0' : '-translate-x-full'
       )}>
       <div className='relative h-12 border-t-4 border-primary flex-shrink-0'>
