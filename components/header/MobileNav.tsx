@@ -131,7 +131,7 @@ const MobileNav = ({ isOpen, onClose }: MobileNavProps) => {
           {activeCategory &&
             Object.entries(activeCategory.subcategories).map(
               ([key, values]) => (
-                <div>
+                <div key={key}>
                   <div className='text-sm mb-6'>{key}</div>
                   <ul className='space-y-6 pl-6'>
                     {values.map((subcategory, index) => (

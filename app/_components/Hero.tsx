@@ -38,7 +38,7 @@ const Hero = () => {
         </h1>
         <p className='text-white max-w-md text-center text-sm'>
           An homage to an iconic motif from 1975 inspired by New York, T by
-          Tiffany is an expression of love's endless potential.
+          Tiffany is an expression of love&apos;s endless potential.
         </p>
         <button className='text-sm px-6 py-3 bg-white border border-black'>
           Shop Now
