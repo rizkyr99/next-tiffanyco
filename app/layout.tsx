@@ -1,10 +1,6 @@
 import type { Metadata } from 'next';
-import { Inter, Mulish } from 'next/font/google';
+import { Mulish } from 'next/font/google';
 import './globals.css';
-import Header from '@/components/header';
-import Footer from '@/components/footer';
-
-const inter = Inter({ subsets: ['latin'] });
 const mulish = Mulish({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -20,11 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={mulish.className}>
-        <Header />
-        {children}
-        <Footer />
-      </body>
+      <body className={mulish.className}>{children}</body>
     </html>
   );
 }
