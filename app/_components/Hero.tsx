@@ -59,7 +59,7 @@ const Hero = () => {
         <h1 className='text-black md:text-white text-2xl font-semibold'>
           With Love, Since 1837
         </h1>
-        <p className='text-black md:text-white md:max-w-md text-center text-sm'>
+        <p className='text-black md:text-white md:max-w-md text-center text-sm font-light'>
           An homage to an iconic motif from 1975 inspired by New York, T by
           Tiffany is an expression of love&apos;s endless potential.
         </p>
