@@ -114,7 +114,7 @@ const Carousel = ({ type, data }: CarouselProps) => {
             {type === 'collections' && (
               <Link
                 href={product.url}
-                className='relative w-fit font-semibold text-sm flex items-center gap-2 sm:mx-auto after:content-[""] after:block after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-primary hover:after:w-full after:transition-all after:duration-300 after:ease-in-out'>
+                className='underline-hover-link sm:mx-auto'>
                 Shop Now
                 <ChevronRight className='size-4 stroke-1 text-neutral-500' />
               </Link>
