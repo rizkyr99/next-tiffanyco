@@ -6,7 +6,6 @@ import { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperClass } from 'swiper/types';
 
-import { products } from '@/data/products';
 import Link from 'next/link';
 import { cn } from '@/utils/cn';
 
