@@ -1,3 +1,4 @@
+import Category from './_components/Category';
 import Collections from './_components/Collections';
 import Featured from './_components/Featured';
 import Gifts from './_components/Gifts';
@@ -10,6 +11,7 @@ export default function Home() {
       <Featured />
       <Collections />
       <Gifts />
+      <Category />
     </main>
   );
 }
