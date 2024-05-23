@@ -22,7 +22,7 @@ const Hero = () => {
   }, [isPaused]);
 
   return (
-    <div className='relative'>
+    <div className='group relative'>
       <div className='relative aspect-square md:aspect-video object-cover'>
         <video
           ref={videoRef}
@@ -36,7 +36,7 @@ const Hero = () => {
 
         <button
           onClick={() => setIsMuted((prev) => !prev)}
-          className='absolute z-50 bottom-4 left-4 size-10 bg-black rounded-full flex items-center justify-center'>
+          className='hidden group-hover:flex absolute z-50 bottom-4 left-4 size-10 bg-black rounded-full items-center justify-center'>
           <VolumeX
             className={cn('size-5 text-white', isMuted ? 'block' : 'hidden')}
           />
@@ -46,7 +46,7 @@ const Hero = () => {
         </button>
         <button
           onClick={() => setIsPaused((prev) => !prev)}
-          className='absolute z-50 bottom-4 right-4 size-10 bg-black rounded-full flex items-center justify-center'>
+          className='hidden group-hover:flex absolute z-50 bottom-4 right-4 size-10 bg-black rounded-full items-center justify-center'>
           <Play
             className={cn('size-5 text-white', isPaused ? 'block' : 'hidden')}
           />
