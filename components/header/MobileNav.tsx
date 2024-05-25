@@ -1,3 +1,7 @@
+'use state';
+
+import { menuItems } from '@/constants/menu';
+import { MenuItem } from '@/types/menu';
 import { cn } from '@/utils/cn';
 import {
   Calendar,
@@ -9,7 +13,9 @@ import {
   X,
 } from 'lucide-react';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import Jewelry from './nav-content/Jewelry';
+import Gifts from './nav-content/Gifts';
 
 interface Category {
   id: string;
@@ -23,46 +29,46 @@ interface CategoryWithSub extends Category {
   };
 }
 
-const items: CategoryWithSub[] = [
-  {
-    id: '1',
-    label: 'Jewelry',
-    path: '/jewelry',
-    subcategories: {
-      'Shop by Categories': [
-        {
-          id: '3',
-          label: 'Necklaces & Pendants',
-          path: '/necklaces-pendants',
-        },
-        {
-          id: '4',
-          label: 'Earrings',
-          path: '/earrings',
-        },
-        {
-          id: '4',
-          label: 'Bracelets',
-          path: '/bracelets',
-        },
-      ],
-    },
-  },
-  {
-    id: '2',
-    label: 'Gifts',
-    path: '/gifts',
-    subcategories: {
-      'Gifts for...': [
-        {
-          id: '2',
-          label: 'Necklaces & Pendants',
-          path: '/necklaces-pendants',
-        },
-      ],
-    },
-  },
-];
+// const items: CategoryWithSub[] = [
+//   {
+//     id: '1',
+//     label: 'Jewelry',
+//     path: '/jewelry',
+//     subcategories: {
+//       'Shop by Categories': [
+//         {
+//           id: '3',
+//           label: 'Necklaces & Pendants',
+//           path: '/necklaces-pendants',
+//         },
+//         {
+//           id: '4',
+//           label: 'Earrings',
+//           path: '/earrings',
+//         },
+//         {
+//           id: '4',
+//           label: 'Bracelets',
+//           path: '/bracelets',
+//         },
+//       ],
+//     },
+//   },
+//   {
+//     id: '2',
+//     label: 'Gifts',
+//     path: '/gifts',
+//     subcategories: {
+//       'Gifts for...': [
+//         {
+//           id: '2',
+//           label: 'Necklaces & Pendants',
+//           path: '/necklaces-pendants',
+//         },
+//       ],
+//     },
+//   },
+// ];
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -70,12 +76,26 @@ interface MobileNavProps {
 }
 
 const MobileNav = ({ isOpen, onClose }: MobileNavProps) => {
-  const [activeCategory, setActiveCategory] = useState<CategoryWithSub>();
+  const [activeCategory, setActiveCategory] = useState<MenuItem>();
+  const [content, setContent] = useState<JSX.Element>(Jewelry);
+
+  useEffect(() => {
+    switch (activeCategory?.label) {
+      case 'Jewelry':
+        setContent(Jewelry);
+        break;
+      case 'Gifts':
+        setContent(Gifts);
+        break;
+      default:
+        setContent(Jewelry);
+    }
+  }, [activeCategory, activeCategory?.label]);
 
   return (
     <div
       className={cn(
-        'fixed z-50 top-0 left-0 bg-white h-screen w-screen flex flex-col transition duration-300 ease-in-out',
+        'fixed z-50 top-0 left-0 bg-white h-screen w-screen flex flex-col transition duration-300 ease-in-out lg:-translate-x-full',
         isOpen ? 'translate-x-0' : '-translate-x-full'
       )}>
       <div className='relative h-12 border-t-4 border-primary flex-shrink-0'>
@@ -85,7 +105,7 @@ const MobileNav = ({ isOpen, onClose }: MobileNavProps) => {
       </div>
       <div className='px-4 pt-6 pb-24 flex-1 overflow-y-auto'>
         <div className='border-b border-neutral-400'>
-          {items.map((item) => (
+          {menuItems.map((item) => (
             <button
               key={item.path}
               onClick={() => setActiveCategory(item)}
@@ -127,27 +147,7 @@ const MobileNav = ({ isOpen, onClose }: MobileNavProps) => {
           </button>
           <span>{activeCategory?.label}</span>
         </div>
-        <div className='flex-1 overflow-y-auto p-4'>
-          {activeCategory &&
-            Object.entries(activeCategory.subcategories).map(
-              ([key, values]) => (
-                <div key={key}>
-                  <div className='text-sm mb-6'>{key}</div>
-                  <ul className='space-y-6 pl-6'>
-                    {values.map((subcategory, index) => (
-                      <li key={index}>
-                        <Link
-                          href={activeCategory.path + subcategory.path}
-                          className='text-sm font-light'>
-                          {subcategory.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )
-            )}
-        </div>
+        <div className='flex-1 overflow-y-auto p-4 space-y-12'>{content}</div>
       </div>
     </div>
   );

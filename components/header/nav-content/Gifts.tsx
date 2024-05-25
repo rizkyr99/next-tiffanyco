@@ -7,7 +7,7 @@ const Gifts = () => {
     <>
       <div>
         <div className='text-sm font-semibold mb-4'>Gifts for...</div>
-        <div className='flex flex-col gap-y-4'>
+        <div className='flex flex-col gap-y-6 lg:gap-y-4 px-6 lg:px-0'>
           <Link href='necklaces-and-pendants' className='text-sm font-light'>
             Her
           </Link>
@@ -39,7 +39,7 @@ const Gifts = () => {
       </div>
       <div>
         <div className='text-sm font-semibold mb-4'>Discover</div>
-        <div className='flex flex-col gap-y-4'>
+        <div className='flex flex-col gap-y-6 lg:gap-y-4 px-6 lg:px-0'>
           <Link href='necklaces-and-pendants' className='text-sm font-light'>
             Gifts $1,500 & Under
           </Link>
@@ -66,7 +66,7 @@ const Gifts = () => {
           </Link>
         </div>
       </div>
-      <div className='col-span-2'>
+      <div className='hidden lg:block col-span-2'>
         <Image
           src='/assets/images/categories/2024-Icons-Nav-Schlum.webp'
           width={750}

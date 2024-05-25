@@ -6,7 +6,7 @@ const Jewelry = () => {
     <>
       <div>
         <div className='text-sm font-semibold mb-4'>Shop by Category</div>
-        <div className='flex flex-col gap-y-4'>
+        <div className='flex flex-col gap-y-6 lg:gap-y-4 px-6 lg:px-0'>
           <Link href='necklaces-and-pendants' className='text-sm font-light'>
             Necklaces & Pendants
           </Link>
@@ -38,7 +38,7 @@ const Jewelry = () => {
       </div>
       <div>
         <div className='text-sm font-semibold mb-4'>Curated Shops</div>
-        <div className='flex flex-col gap-y-4'>
+        <div className='flex flex-col gap-y-6 lg:gap-y-4 px-6 lg:px-0'>
           <Link href='necklaces-and-pendants' className='text-sm font-light'>
             Gifts for Her
           </Link>
@@ -61,7 +61,7 @@ const Jewelry = () => {
       </div>
       <div>
         <div className='text-sm font-semibold mb-4'>Shop by Category</div>
-        <div className='flex flex-col gap-y-4'>
+        <div className='flex flex-col gap-y-6 lg:gap-y-4 px-6 lg:px-0'>
           <Link href='necklaces-and-pendants' className='text-sm font-light'>
             Necklaces & Pendants
           </Link>
@@ -81,7 +81,7 @@ const Jewelry = () => {
       </div>
       <div>
         <div className='text-sm font-semibold mb-4'>Shop by Category</div>
-        <div className='flex flex-col gap-y-4'>
+        <div className='flex flex-col gap-y-6 lg:gap-y-4 px-6 lg:px-0'>
           <Link href='necklaces-and-pendants' className='text-sm font-light'>
             Necklaces & Pendants
           </Link>
