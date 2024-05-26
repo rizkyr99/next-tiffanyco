@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 const config: Config = {
   content: [
@@ -15,6 +16,9 @@ const config: Config = {
       },
       colors: {
         primary: '#81D8D0',
+      },
+      fontFamily: {
+        playfair: ['var(--font-playfair)', ...defaultTheme.fontFamily.serif],
       },
     },
   },

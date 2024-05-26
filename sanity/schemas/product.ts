@@ -9,6 +9,14 @@ export default {
       type: 'string',
     },
     {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'name',
+      },
+    },
+    {
       name: 'image',
       title: 'Image',
       type: 'array',

@@ -1,7 +1,14 @@
 import type { Metadata } from 'next';
-import { Mulish } from 'next/font/google';
+import { Mulish, Playfair_Display } from 'next/font/google';
 import './globals.css';
+import { cn } from '@/utils/cn';
+
 const mulish = Mulish({ subsets: ['latin'] });
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800', '900'],
+  variable: '--font-playfair',
+});
 
 export const metadata: Metadata = {
   title: 'Tiffany & Co. US | Luxury Jewelry, Gifts & Accessories Since 1837',
@@ -16,7 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={mulish.className}>{children}</body>
+      <body className={cn(mulish.className, playfair.variable)}>
+        {children}
+      </body>
     </html>
   );
 }
