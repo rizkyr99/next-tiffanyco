@@ -11,7 +11,7 @@ const Collections = () => {
           ever-changing world speak the ever-changing language of love.
         </p>
       </div>
-      <div>
+      <div className='my-8'>
         <Carousel type='collections' data={collections} />
       </div>
     </section>

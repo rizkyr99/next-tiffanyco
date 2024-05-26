@@ -9,6 +9,9 @@ import { Swiper as SwiperClass } from 'swiper/types';
 import Link from 'next/link';
 import { cn } from '@/utils/cn';
 
+import 'swiper/css';
+import 'swiper/css/navigation';
+
 interface CarouselItem {
   name: string;
   image: string;
@@ -76,7 +79,7 @@ const Carousel = ({ type, data }: CarouselProps) => {
         },
       }}
       spaceBetween={type === 'featured' ? 8 : 16}
-      className='mySwiper my-8 relative'>
+      className='mySwiper relative'>
       {data.map((product, index) => (
         <SwiperSlide key={index}>
           <div className='relative bg-neutral-100 aspect-square cursor-pointer'>
