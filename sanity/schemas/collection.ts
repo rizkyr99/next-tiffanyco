@@ -1,18 +1,13 @@
-import { defineField, defineType } from 'sanity';
+import { defineType, defineField } from 'sanity';
 
 export default defineType({
-  name: 'category',
-  title: 'Category',
+  name: 'collection',
+  title: 'Collection',
   type: 'document',
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
-      type: 'string',
-    }),
-    defineField({
-      name: 'description',
-      title: 'Description',
+      name: 'name',
+      title: 'Name',
       type: 'string',
     }),
     defineField({
@@ -20,7 +15,7 @@ export default defineType({
       title: 'Slug',
       type: 'slug',
       options: {
-        source: 'title',
+        source: 'name',
       },
     }),
     defineField({

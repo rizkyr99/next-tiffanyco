@@ -1,3 +1,4 @@
+import { getProductBySlug } from '@/actions/product';
 import Carousel from '@/components/carousel';
 import { products } from '@/data/products';
 import {
@@ -12,9 +13,19 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import { PortableText } from '@portabletext/react';
 
-const ProductPage = () => {
+const ProductPage = async ({ params }: { params: { product: string } }) => {
+  const formatToDollar = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0,
+  });
+
+  const product = await getProductBySlug(params.product);
+
+  if (!product) return 'Product Not Found';
+
   return (
     <div className='min-h-screen'>
       <div className='grid grid-cols-1 md:grid-cols-[60%,40%]'>
@@ -40,7 +51,7 @@ const ProductPage = () => {
           <Link href='/' className='text-sm font-semibold underline'>
             Tiffany T
           </Link>
-          <h1 className='font-playfair text-2xl'>T1 Circle Pendant</h1>
+          <h1 className='font-playfair text-2xl'>{product.name}</h1>
           <p className='font-playfair text-sm'>in Yellow Gold</p>
           <div className='flex items-center gap-4 my-4'>
             <button>
@@ -67,7 +78,7 @@ const ProductPage = () => {
             Add Engraving
           </div>
           <button className='group relative w-full flex items-center justify-between bg-black text-white border border-black px-6 py-4 text-sm font-semibold hover:bg-primary hover:text-black overflow-hidden'>
-            $850
+            {product.price && formatToDollar.format(product.price)}
             <span className='absolute top-0 right-0 px-6 py-4 group-hover:-translate-y-full transition-all duration-500 ease-in-out'>
               Add to Bag
             </span>
@@ -86,19 +97,21 @@ const ProductPage = () => {
             Find in store
           </div>
           <p className='text-sm font-semibold mb-2'>Description & Details</p>
-          <p className='text-sm font-light'>
-            Inspired by the iconic key ring first introduced in 1969, the Return
-            to Tiffany® collection is a classic reinvented. This standout
-            silhouette embodies the collection&apos;s celebrated aesthetic. Pair
-            this mini heart tag pendant with a Return to Tiffany® mini heart
-            tag bead bracelet to complete your look.
-          </p>
-          <ul className='text-sm font-light list-disc px-5 mt-4'>
-            <li>18k yellow gold</li>
-            <li>On a 16-18&quot; long chain</li>
-            <li>Motif size, mini</li>
-            <li>Product number:72975146</li>
-          </ul>
+          {product.description && (
+            <PortableText
+              value={product.description}
+              components={{
+                block: ({ children }) => (
+                  <p className='text-sm font-light mb-4'>{children}</p>
+                ),
+                list: ({ children }) => (
+                  <ul className='text-sm font-light list-disc px-5'>
+                    {children}
+                  </ul>
+                ),
+              }}
+            />
+          )}
         </div>
       </div>
       <div className='px-2'>
