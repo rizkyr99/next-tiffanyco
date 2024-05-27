@@ -1,5 +1,3 @@
-'use client';
-
 import { useState } from 'react';
 import Image from 'next/image';
 import {
@@ -19,24 +17,12 @@ import Searchbar from './Searchbar';
 import Link from 'next/link';
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleNavOpen = () => {
-    setIsOpen(true);
-  };
-
-  const handleNavClose = () => {
-    setIsOpen(false);
-  };
-
   return (
     <header className='h-fit bg-white flex flex-col p-0'>
       <TopBar />
       <div className='h-12 md:h-fit flex justify-between items-center p-4 lg:px-6 border-t-4 border-primary'>
         <div className='flex-1 flex items-center gap-4 md:gap-8'>
-          <button onClick={handleNavOpen} className='lg:hidden cursor-pointer'>
-            <Menu className='size-6 stroke-1' />
-          </button>
+          <MobileNav />
           <button className='hidden sm:flex cursor-pointer'>
             <Search className='size-5 stroke-1 hover:stroke-2' />
           </button>
@@ -76,7 +62,6 @@ const Header = () => {
       </div>
       <Searchbar />
       <Navbar />
-      <MobileNav isOpen={isOpen} onClose={handleNavClose} />
     </header>
   );
 };
