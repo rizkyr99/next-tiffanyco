@@ -1,7 +1,9 @@
+import { getFeaturedProducts } from '@/actions/product';
 import Carousel from '@/components/carousel';
-import { products } from '@/data/products';
 
-const Featured = () => {
+const Featured = async () => {
+  const products = await getFeaturedProducts();
+
   return (
     <section className='px-4 lg:px-14 py-4'>
       <div className='my-8'>

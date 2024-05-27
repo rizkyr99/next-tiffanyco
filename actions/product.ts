@@ -1,5 +1,6 @@
 import { Product } from '@/sanity.types';
 import { client } from '@/sanity/lib/client';
+import { CarouselItem } from '@/types/product';
 import { revalidatePath } from 'next/cache';
 
 export const getProductBySlug = async (
@@ -20,6 +21,26 @@ export const getProductBySlug = async (
     return product;
   } catch (error) {
     console.error('Error fetching product:', error);
+    throw new Error('Failed to fetch product. Please try again later.');
+  }
+};
+
+export const getFeaturedProducts = async (): Promise<CarouselItem[]> => {
+  try {
+    const query = `*[_type == "product"] {
+      name,
+      "image": image[0].asset->url,
+      "slug": "/" + category->slug.current + "/" + subcategory->slug.current + "/" + slug.current,
+      isLimited
+    }`;
+
+    const products = await client.fetch(query);
+
+    console.log(products);
+
+    return products;
+  } catch (error) {
+    console.log('Error fetching product:', error);
     throw new Error('Failed to fetch product. Please try again later.');
   }
 };

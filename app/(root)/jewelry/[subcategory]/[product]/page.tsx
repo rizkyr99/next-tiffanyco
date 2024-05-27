@@ -1,6 +1,5 @@
-import { getProductBySlug } from '@/actions/product';
+import { getFeaturedProducts, getProductBySlug } from '@/actions/product';
 import Carousel from '@/components/carousel';
-import { products } from '@/data/products';
 import {
   ALargeSmall,
   Heart,
@@ -21,6 +20,8 @@ const ProductPage = async ({ params }: { params: { product: string } }) => {
     currency: 'USD',
     maximumFractionDigits: 0,
   });
+
+  const featuredProducts = await getFeaturedProducts();
 
   const product = await getProductBySlug(params.product);
 
@@ -118,9 +119,9 @@ const ProductPage = async ({ params }: { params: { product: string } }) => {
         <h2 className='font-playfair text-3xl my-8 md:text-center'>
           You May Also Like
         </h2>
-        <div className='flex'>
-          <div className='hidden md:block w-56 bg-primary'></div>
-          <Carousel type='featured' data={products} />
+        <div className='border-l-[96px] border-primary'>
+          {/* <div className='hidden md:block w-56 bg-primary'></div> */}
+          <Carousel type='featured' data={featuredProducts} />
         </div>
       </div>
       <div></div>

@@ -55,5 +55,10 @@ export default defineType({
       type: 'reference',
       to: [{ type: 'collection' }],
     }),
+    defineField({
+      name: 'isLimited',
+      title: 'Limited Edition',
+      type: 'boolean',
+    }),
   ],
 });

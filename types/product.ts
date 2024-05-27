@@ -4,3 +4,10 @@ export interface Product {
   url: string;
   isLimited: boolean;
 }
+
+export interface CarouselItem {
+  name: string;
+  image: string;
+  slug: string;
+  isLimited?: boolean;
+}

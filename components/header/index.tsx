@@ -16,6 +16,7 @@ import MobileNav from './MobileNav';
 import TopBar from './TopBar';
 import Navbar from './Navbar';
 import Searchbar from './Searchbar';
+import Link from 'next/link';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,13 +48,15 @@ const Header = () => {
             Contact us
           </button>
         </div>
-        <Image
-          src='/assets/images/logo.png'
-          width={190}
-          height={26}
-          alt='tiffany & co logo'
-          className='w-32 md:w-48 object-cover'
-        />
+        <Link href='/'>
+          <Image
+            src='/assets/images/logo.png'
+            width={190}
+            height={26}
+            alt='tiffany & co logo'
+            className='w-32 md:w-48 object-cover'
+          />
+        </Link>
         <div className='relative z-10 flex items-center gap-4 md:gap-8 flex-1 justify-end'>
           {/* <div className='absolute w-[calc(100%-8rem)] h-[calc(100%+2.5rem)] -top-5 -right-6 bg-primary -z-10' /> */}
           <button className='group hidden lg:flex items-center gap-2 text-sm'>

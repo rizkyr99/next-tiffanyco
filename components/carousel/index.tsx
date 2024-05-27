@@ -11,13 +11,7 @@ import { cn } from '@/utils/cn';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
-
-interface CarouselItem {
-  name: string;
-  image: string;
-  url: string;
-  isLimited?: boolean;
-}
+import { CarouselItem } from '@/types/product';
 
 interface CarouselProps {
   type: 'featured' | 'collections';
@@ -83,7 +77,7 @@ const Carousel = ({ type, data }: CarouselProps) => {
       {data.map((product, index) => (
         <SwiperSlide key={index}>
           <div className='relative bg-neutral-100 aspect-square cursor-pointer'>
-            <Link href={product.url}>
+            <Link href={product.slug}>
               <Image
                 src={product.image}
                 width={736}
@@ -115,7 +109,7 @@ const Carousel = ({ type, data }: CarouselProps) => {
             </p>
             {type === 'collections' && (
               <Link
-                href={product.url}
+                href={product.slug}
                 className='underline-hover-link sm:mx-auto'>
                 Shop Now
                 <ChevronRight className='size-4 stroke-1 text-neutral-500' />

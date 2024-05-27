@@ -12,7 +12,7 @@ export default function Home() {
     <main className='space-y-10 lg:space-y-12'>
       <Hero />
       <Featured />
-      <Collections />
+      {/* <Collections /> */}
       <Gifts />
       <Category />
       <Newest />
