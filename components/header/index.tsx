@@ -15,6 +15,8 @@ import TopBar from './TopBar';
 import Navbar from './Navbar';
 import Searchbar from './Searchbar';
 import Link from 'next/link';
+import Account from './Account';
+import NavRight from './NavRight';
 
 const Header = () => {
   return (
@@ -43,22 +45,7 @@ const Header = () => {
             className='w-32 md:w-48 object-cover'
           />
         </Link>
-        <div className='relative z-10 flex items-center gap-4 md:gap-8 flex-1 justify-end'>
-          {/* <div className='absolute w-[calc(100%-8rem)] h-[calc(100%+2.5rem)] -top-5 -right-6 bg-primary -z-10' /> */}
-          <button className='group hidden lg:flex items-center gap-2 text-sm'>
-            <Calendar className='size-5 stroke-1 group-hover:stroke-2' />
-            Book an Appointment
-          </button>
-          <div className='hidden lg:flex cursor-pointer'>
-            <User className='size-5 stroke-1 hover:stroke-2' />
-          </div>
-          <div className='cursor-pointer'>
-            <Heart className='size-5 stroke-1 hover:stroke-2' />
-          </div>
-          <div className='cursor-pointer'>
-            <ShoppingBag className='size-5 stroke-1 hover:stroke-2' />
-          </div>
-        </div>
+        <NavRight />
       </div>
       <Searchbar />
       <Navbar />
