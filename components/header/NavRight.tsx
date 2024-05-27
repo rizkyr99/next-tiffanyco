@@ -97,32 +97,35 @@ const NavRight = () => {
         <Calendar className='size-5 stroke-1 group-hover:stroke-2' />
         Book an Appointment
       </button>
-      <div
+      <Link
+        href='/account'
         onMouseEnter={() => setItemHovered('account')}
         className='hidden lg:flex cursor-pointer'>
         <User className='size-5 stroke-1 hover:stroke-2' />
-      </div>
-      <div
+      </Link>
+      <Link
+        href='/wishlist'
         onMouseEnter={() => setItemHovered('wishlist')}
         className='cursor-pointer'>
         <Heart className='size-5 stroke-1 hover:stroke-2' />
-      </div>
-      <div
+      </Link>
+      <Link
+        href='/shopping-bag'
         onMouseEnter={() => setItemHovered('shopping-bag')}
         className='cursor-pointer'>
         <ShoppingBag className='size-5 stroke-1 hover:stroke-2' />
-      </div>
+      </Link>
 
       <div
         className={cn(
           'fixed -z-20 top-0 left-0 w-screen h-screen bg-black/50',
-          itemHovered ? 'block' : 'hidden'
+          itemHovered ? 'hidden lg:block' : 'hidden'
         )}></div>
       <div
         onMouseLeave={() => setItemHovered(undefined)}
         className={cn(
           'fixed -z-10 top-0 right-0 h-screen pb-96 w-[450px]',
-          itemHovered ? 'visible' : 'invisible'
+          itemHovered ? 'invisible lg:visible' : 'invisible'
         )}>
         <div className='w-full h-28 bg-primary delay-150'></div>
         <div
