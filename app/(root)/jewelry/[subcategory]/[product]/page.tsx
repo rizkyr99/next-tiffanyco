@@ -13,6 +13,18 @@ import {
 import Image from 'next/image';
 import Link from 'next/link';
 import { PortableText } from '@portabletext/react';
+import imageUrlBuilder from '@sanity/image-url';
+import { client } from '@/sanity/lib/client';
+
+// Get a pre-configured url-builder from your sanity client
+const builder = imageUrlBuilder(client);
+
+// Then we like to make a simple function like this that gives the
+// builder an image and returns the builder for you to specify additional
+// parameters:
+function urlFor(source: any) {
+  return builder.image(source);
+}
 
 const ProductPage = async ({ params }: { params: { product: string } }) => {
   const formatToDollar = new Intl.NumberFormat('en-US', {
@@ -21,9 +33,8 @@ const ProductPage = async ({ params }: { params: { product: string } }) => {
     maximumFractionDigits: 0,
   });
 
-  const featuredProducts = await getFeaturedProducts();
-
   const product = await getProductBySlug(params.product);
+  const featuredProducts = await getFeaturedProducts();
 
   if (!product) return 'Product Not Found';
 
@@ -31,19 +42,20 @@ const ProductPage = async ({ params }: { params: { product: string } }) => {
     <div className='min-h-screen'>
       <div className='grid grid-cols-1 md:grid-cols-[60%,40%]'>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-2 place-content-start'>
-          {[...Array(5)].map((_, index) => (
-            <div key={index} className='group relative aspect-square w-full'>
-              <Image
-                src='/assets/images/products/tiffany-tsmile-pendant.jpg'
-                fill
-                alt=''
-                className='object-cover'
-              />
-              <div className='absolute inset-0 hidden group-hover:flex items-center justify-center cursor-zoom-in'>
-                <ZoomIn className='size-12 stroke-1' />
+          {product.image &&
+            product.image.map((item, index) => (
+              <div key={index} className='group relative aspect-square w-full'>
+                <Image
+                  src={urlFor(item).url()}
+                  fill
+                  alt=''
+                  className='object-cover'
+                />
+                <div className='absolute inset-0 hidden group-hover:flex items-center justify-center cursor-zoom-in'>
+                  <ZoomIn className='size-12 stroke-1' />
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
         <div className='py-12 px-8 lg:px-28 lg:py-16 sticky top-0 self-start'>
           <div className='text-xs mb-8'>
@@ -120,7 +132,6 @@ const ProductPage = async ({ params }: { params: { product: string } }) => {
           You May Also Like
         </h2>
         <div className='border-l-[96px] border-primary'>
-          {/* <div className='hidden md:block w-56 bg-primary'></div> */}
           <Carousel type='featured' data={featuredProducts} />
         </div>
       </div>
