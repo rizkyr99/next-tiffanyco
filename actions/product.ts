@@ -44,3 +44,22 @@ export const getFeaturedProducts = async (): Promise<CarouselItem[]> => {
     throw new Error('Failed to fetch product. Please try again later.');
   }
 };
+
+export const getCollections = async (): Promise<CarouselItem[]> => {
+  try {
+    const query = `*[_type == "collection"] {
+      name,
+      "image": image.asset->url,
+      "slug": slug.current
+    }`;
+
+    const collections = await client.fetch(query);
+
+    console.log(collections);
+
+    return collections;
+  } catch (error) {
+    console.log('Error fetching product:', error);
+    throw new Error('Failed to fetch product. Please try again later.');
+  }
+};
