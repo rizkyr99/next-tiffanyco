@@ -13,4 +13,24 @@ export const menuItems: MenuItem[] = [
     label: 'Love & Engagement',
     path: '/love-and-engagement',
   },
+  {
+    label: 'Fine Watches',
+    path: '/fine-watches',
+  },
+  {
+    label: 'Home & Accessories',
+    path: '/home-and-accessories',
+  },
+  {
+    label: 'Fragrance',
+    path: '/fragrance',
+  },
+  {
+    label: "Men's",
+    path: '/mens',
+  },
+  {
+    label: 'Stories',
+    path: '/stories',
+  },
 ];

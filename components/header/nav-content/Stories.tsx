@@ -1,7 +1,7 @@
 import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 
-const Jewelry = () => {
+const Stories = () => {
   return (
     <>
       <div>
@@ -147,4 +147,4 @@ const Jewelry = () => {
   );
 };
 
-export default Jewelry;
+export default Stories;
