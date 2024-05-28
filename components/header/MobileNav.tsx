@@ -17,27 +17,14 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Jewelry from './nav-content/Jewelry';
 import Gifts from './nav-content/Gifts';
+import useNavMenu from '@/hooks/useNavMenu';
 
 const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeCategory, setActiveCategory] = useState<MenuItem>();
-  const [content, setContent] = useState<JSX.Element>(Jewelry);
-
-  useEffect(() => {
-    switch (activeCategory?.label) {
-      case 'Jewelry':
-        setContent(Jewelry);
-        break;
-      case 'Gifts':
-        setContent(Gifts);
-        break;
-      default:
-        setContent(Jewelry);
-    }
-  }, [activeCategory, activeCategory?.label]);
+  const { activeItem, setActiveItem, content } = useNavMenu();
 
   return (
-    <>
+    <div>
       <button
         onClick={() => setIsOpen(true)}
         className='lg:hidden cursor-pointer'>
@@ -60,7 +47,7 @@ const MobileNav = () => {
             {menuItems.map((item) => (
               <button
                 key={item.path}
-                onClick={() => setActiveCategory(item)}
+                onClick={() => setActiveItem(item)}
                 className='text-sm w-full flex items-center justify-between pb-6'>
                 {item.label}
                 <ChevronRight className='size-6 stroke-1' />
@@ -89,20 +76,20 @@ const MobileNav = () => {
         <div
           className={cn(
             'fixed top-0 left-0 w-screen h-screen flex flex-col bg-white border transition duration-300 ease-in-out',
-            activeCategory ? 'translate-x-0' : '-translate-x-full'
+            activeItem ? 'translate-x-0' : '-translate-x-full'
           )}>
           <div className='relative h-20 flex items-center justify-center'>
             <button
-              onClick={() => setActiveCategory(undefined)}
+              onClick={() => setActiveItem(undefined)}
               className='absolute top-6 left-4'>
               <ChevronLeft className='size-7 stroke-1' />
             </button>
-            <span>{activeCategory?.label}</span>
+            <span>{activeItem?.label}</span>
           </div>
           <div className='flex-1 overflow-y-auto p-4 space-y-12'>{content}</div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

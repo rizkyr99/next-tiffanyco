@@ -1,40 +1,11 @@
 'use client';
 
 import { menuItems } from '@/constants/menu';
-import { MenuItem } from '@/types/menu';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import Jewelry from './nav-content/Jewelry';
-import LoveEngagement from './nav-content/LoveEngagement';
-import Gifts from './nav-content/Gifts';
+import useNavMenu from '@/hooks/useNavMenu';
 
 const Navbar = () => {
-  const [activeItem, setActiveItem] = useState<MenuItem>();
-  const [content, setContent] = useState<JSX.Element>();
-
-  useEffect(() => {
-    if (!activeItem) return;
-
-    switch (activeItem.label) {
-      case 'Jewelry':
-        setContent(Jewelry);
-        break;
-      case 'Love & Engagement':
-        setContent(LoveEngagement);
-        break;
-      case 'Gifts':
-        setContent(Gifts);
-        break;
-      case 'Fine Watches':
-        setContent(Jewelry);
-        break;
-      case 'Home & Accessories':
-        setContent(Jewelry);
-        break;
-      default:
-        setContent(undefined);
-    }
-  }, [activeItem, activeItem?.label]);
+  const { activeItem, setActiveItem, content } = useNavMenu();
 
   return (
     <nav
