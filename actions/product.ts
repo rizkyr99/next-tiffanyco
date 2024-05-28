@@ -28,15 +28,13 @@ export const getProductBySlug = async (
 export const getFeaturedProducts = async (): Promise<CarouselItem[]> => {
   try {
     const query = `*[_type == "product"] {
-      name,
+      "name": collection->name + " " + name,
       "image": image[0].asset->url,
       "slug": "/" + category->slug.current + "/" + subcategory->slug.current + "/" + slug.current,
       isLimited
     }`;
 
     const products = await client.fetch(query);
-
-    console.log(products);
 
     return products;
   } catch (error) {
