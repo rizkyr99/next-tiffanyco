@@ -4,10 +4,14 @@ import { urlFor } from '@/utils/imageUrlBuilder';
 import { useEffect, useState } from 'react';
 
 const useCart = () => {
-  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+  useEffect(() => {
     const storedCart = window.localStorage.getItem('cartItems');
-    return storedCart ? JSON.parse(storedCart) : [];
-  });
+    if (storedCart) {
+      setCartItems(JSON.parse(storedCart));
+    }
+  }, []);
 
   const handleAddToCart = (product: Product, quantity: number) => {
     if (!product.name || !product.image || !product.price) return;
