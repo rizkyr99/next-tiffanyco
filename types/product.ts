@@ -11,3 +11,11 @@ export interface CarouselItem {
   slug: string;
   isLimited?: boolean;
 }
+
+export interface CartItem {
+  productId: string;
+  productName: string;
+  image: string;
+  price: number;
+  quantity: number;
+}

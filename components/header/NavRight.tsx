@@ -1,11 +1,20 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { Calendar, ChevronRight, Heart, ShoppingBag, User } from 'lucide-react';
+import {
+  Calendar,
+  ChevronRight,
+  Heart,
+  ShoppingBagIcon,
+  User,
+} from 'lucide-react';
 import { cn } from '@/utils/cn';
 import Link from 'next/link';
+import ShoppingBag from './ShoppingBag';
+import useCart from '@/hooks/useCart';
 
 const AccountContent = () => {
+  const { cartItems } = useCart();
   return (
     <>
       <p className='font-playfair text-3xl mb-4'>Sign In or Create Account</p>
@@ -39,28 +48,16 @@ const WishlistContent = () => {
     </>
   );
 };
-const ShoppingBagContent = () => {
-  return (
-    <>
-      <p className='font-playfair text-3xl mb-4'>Your Shopping Bag</p>
-      <p className='font-semibold text-sm mb-8'>Your shopping bag is empty.</p>
-      <p className='text-sm font-light mb-4'>
-        For faster checkout, sign in to your account
-      </p>
-      <Link href='/sign-in' className='underline-hover-link'>
-        Sign In
-        <ChevronRight className='size-4 stroke-1 text-neutral-500' />
-      </Link>
-    </>
-  );
-};
 
 const NavRight = () => {
   const [itemHovered, setItemHovered] = useState<
     'account' | 'wishlist' | 'shopping-bag'
   >();
-  const [content, setContent] = useState<JSX.Element>();
+  const [contentVisible, setContentVisible] = useState<
+    'account' | 'wishlist' | 'shopping-bag'
+  >();
   const containerRef = useRef<HTMLDivElement>(null);
+  const { cartItems } = useCart();
 
   useEffect(() => {
     if (containerRef.current) {
@@ -75,16 +72,16 @@ const NavRight = () => {
 
         switch (itemHovered) {
           case 'account':
-            setContent(AccountContent);
+            setContentVisible('account');
             break;
           case 'wishlist':
-            setContent(WishlistContent);
+            setContentVisible('wishlist');
             break;
           case 'shopping-bag':
-            setContent(ShoppingBagContent);
+            setContentVisible('shopping-bag');
             break;
           default:
-            setContent(undefined);
+            setContentVisible(undefined);
         }
       }
     }, 750);
@@ -112,8 +109,16 @@ const NavRight = () => {
       <Link
         href='/shopping-bag'
         onMouseEnter={() => setItemHovered('shopping-bag')}
-        className='cursor-pointer'>
-        <ShoppingBag className='size-5 stroke-1 hover:stroke-2' />
+        className='flex items-center gap-1 cursor-pointer'>
+        <ShoppingBagIcon
+          className={cn(
+            'size-5 stroke-1 hover:stroke-2',
+            cartItems.length > 0 && 'fill-primary'
+          )}
+        />
+        <span className='text-sm'>
+          {cartItems.length > 0 && cartItems.length}
+        </span>
       </Link>
 
       <div
@@ -135,10 +140,10 @@ const NavRight = () => {
           )}>
           <div
             className={cn(
-              'h-full w-full px-8 flex flex-col items-start transition-all duration-500',
-              itemHovered ? 'py-24 opacity-100' : 'py-0 opacity-0'
+              'h-full w-full px-8 flex flex-col items-start transition-all duration-500 max-h-full',
+              itemHovered ? 'opacity-100' : 'py-0 opacity-0'
             )}>
-            {content}
+            <ShoppingBag isVisible={contentVisible === 'shopping-bag'} />
           </div>
         </div>
       </div>
