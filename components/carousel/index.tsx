@@ -9,12 +9,9 @@ import { Swiper as SwiperClass } from 'swiper/types';
 import Link from 'next/link';
 import { cn } from '@/utils/cn';
 
-interface CarouselItem {
-  name: string;
-  image: string;
-  url: string;
-  isLimited?: boolean;
-}
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { CarouselItem } from '@/types/product';
 
 interface CarouselProps {
   type: 'featured' | 'collections';
@@ -76,11 +73,11 @@ const Carousel = ({ type, data }: CarouselProps) => {
         },
       }}
       spaceBetween={type === 'featured' ? 8 : 16}
-      className='mySwiper my-8 relative'>
+      className='mySwiper relative'>
       {data.map((product, index) => (
         <SwiperSlide key={index}>
           <div className='relative bg-neutral-100 aspect-square cursor-pointer'>
-            <Link href={product.url}>
+            <Link href={product.slug}>
               <Image
                 src={product.image}
                 width={736}
@@ -112,7 +109,7 @@ const Carousel = ({ type, data }: CarouselProps) => {
             </p>
             {type === 'collections' && (
               <Link
-                href={product.url}
+                href={product.slug}
                 className='underline-hover-link sm:mx-auto'>
                 Shop Now
                 <ChevronRight className='size-4 stroke-1 text-neutral-500' />

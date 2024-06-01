@@ -1,51 +1,37 @@
+'use client';
+
+import { menuItems } from '@/constants/menu';
 import Link from 'next/link';
-import React from 'react';
+import useNavMenu from '@/hooks/useNavMenu';
 
 const Navbar = () => {
+  const { activeItem, setActiveItem, content } = useNavMenu();
+
   return (
-    <nav className='hidden lg:block h-10 w-full bg-white'>
+    <nav
+      onMouseLeave={() => setActiveItem(undefined)}
+      className='relative hidden lg:block h-10 w-full bg-white'>
       <ul className='h-full w-full flex items-start gap-12 px-6 justify-center'>
-        <li>
-          <Link href='/' className='font-light'>
-            Jewelry
-          </Link>
-        </li>
-        <li>
-          <Link href='/' className='font-light'>
-            Gifts
-          </Link>
-        </li>
-        <li>
-          <Link href='/' className='font-light'>
-            Jewelry
-          </Link>
-        </li>
-        <li>
-          <Link href='/' className='font-light'>
-            Gifts
-          </Link>
-        </li>
-        <li>
-          <Link href='/' className='font-light'>
-            Jewelry
-          </Link>
-        </li>
-        <li>
-          <Link href='/' className='font-light'>
-            Gifts
-          </Link>
-        </li>
-        <li>
-          <Link href='/' className='font-light'>
-            Jewelry
-          </Link>
-        </li>
-        <li>
-          <Link href='/' className='font-light'>
-            Gifts
-          </Link>
-        </li>
+        {menuItems.map((item) => (
+          <li key={item.label}>
+            <Link
+              onMouseEnter={() => setActiveItem(item)}
+              href={item.path}
+              className='font-light'>
+              <span className='underline-hover-link !text-base !font-light hover:!font-semibold'>
+                {item.label}
+              </span>
+            </Link>
+          </li>
+        ))}
       </ul>
+      {activeItem && (
+        <div className='absolute z-50 top-full left-0 w-full bg-white  p-4'>
+          <div className='grid grid-cols-4 gap-8 max-w-screen-xl mx-auto'>
+            {content}
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

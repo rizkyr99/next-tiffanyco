@@ -1,7 +1,8 @@
+import { getCollections } from '@/actions/product';
 import Carousel from '@/components/carousel';
-import { collections } from '@/data/categories';
 
-const Collections = () => {
+const Collections = async () => {
+  const collections = await getCollections();
   return (
     <section className='px-4 lg:px-14'>
       <div className='mb-6 md:px-4 lg:text-center'>
@@ -11,7 +12,7 @@ const Collections = () => {
           ever-changing world speak the ever-changing language of love.
         </p>
       </div>
-      <div>
+      <div className='my-8'>
         <Carousel type='collections' data={collections} />
       </div>
     </section>
