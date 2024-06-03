@@ -12,9 +12,11 @@ import { cn } from '@/utils/cn';
 import Link from 'next/link';
 import ShoppingBag from './ShoppingBag';
 import { useCart } from '@/hooks/useCart';
+import { useNavRight } from '@/hooks/useNavRight';
+import Account from './Account';
+import Wishlist from './Wishlist';
 
 const AccountContent = () => {
-  const { cartItems } = useCart();
   return (
     <>
       <p className='font-playfair text-3xl mb-4'>Sign In or Create Account</p>
@@ -50,14 +52,12 @@ const WishlistContent = () => {
 };
 
 const NavRight = () => {
-  const [itemHovered, setItemHovered] = useState<
-    'account' | 'wishlist' | 'shopping-bag'
-  >();
   const [contentVisible, setContentVisible] = useState<
     'account' | 'wishlist' | 'shopping-bag'
   >();
   const containerRef = useRef<HTMLDivElement>(null);
   const { cartItems } = useCart();
+  const { activeItem, setActiveItem } = useNavRight();
 
   useEffect(() => {
     if (containerRef.current) {
@@ -65,12 +65,12 @@ const NavRight = () => {
     }
 
     setTimeout(() => {
-      if (itemHovered) {
+      if (activeItem) {
         if (containerRef.current) {
           containerRef.current.style.height = 'calc(100vh - 112px)';
         }
 
-        switch (itemHovered) {
+        switch (activeItem) {
           case 'account':
             setContentVisible('account');
             break;
@@ -85,7 +85,7 @@ const NavRight = () => {
         }
       }
     }, 750);
-  }, [itemHovered]);
+  }, [activeItem]);
 
   return (
     <div className='relative z-20 flex items-center gap-4 md:gap-8 flex-1 justify-end'>
@@ -96,19 +96,19 @@ const NavRight = () => {
       </button>
       <Link
         href='/account'
-        onMouseEnter={() => setItemHovered('account')}
+        onMouseEnter={() => setActiveItem('account')}
         className='hidden lg:flex cursor-pointer'>
         <User className='size-5 stroke-1 hover:stroke-2' />
       </Link>
       <Link
         href='/wishlist'
-        onMouseEnter={() => setItemHovered('wishlist')}
+        onMouseEnter={() => setActiveItem('wishlist')}
         className='cursor-pointer'>
         <Heart className='size-5 stroke-1 hover:stroke-2' />
       </Link>
       <Link
         href='/shopping-bag'
-        onMouseEnter={() => setItemHovered('shopping-bag')}
+        onMouseEnter={() => setActiveItem('shopping-bag')}
         className='flex items-center gap-1 cursor-pointer'>
         <ShoppingBagIcon
           className={cn(
@@ -124,13 +124,13 @@ const NavRight = () => {
       <div
         className={cn(
           'fixed -z-20 top-0 left-0 w-screen h-screen bg-black/50',
-          itemHovered ? 'hidden lg:block' : 'hidden'
+          activeItem ? 'hidden lg:block' : 'hidden'
         )}></div>
       <div
-        onMouseLeave={() => setItemHovered(undefined)}
+        onMouseLeave={() => setActiveItem(undefined)}
         className={cn(
           'fixed -z-10 top-0 right-0 h-screen pb-96 w-[450px]',
-          itemHovered ? 'invisible lg:visible' : 'invisible'
+          activeItem ? 'invisible lg:visible' : 'invisible'
         )}>
         <div className='w-full h-28 bg-primary delay-150'></div>
         <div
@@ -141,8 +141,10 @@ const NavRight = () => {
           <div
             className={cn(
               'h-full w-full px-8 flex flex-col items-start transition-all duration-500 max-h-full',
-              itemHovered ? 'opacity-100' : 'py-0 opacity-0'
+              activeItem ? 'opacity-100' : 'py-0 opacity-0'
             )}>
+            <Account isVisible={contentVisible === 'account'} />
+            <Wishlist isVisible={contentVisible === 'wishlist'} />
             <ShoppingBag isVisible={contentVisible === 'shopping-bag'} />
           </div>
         </div>

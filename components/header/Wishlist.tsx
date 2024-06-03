@@ -8,11 +8,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-interface AccountProps {
+interface WishlistProps {
   isVisible: boolean;
 }
 
-const Account = ({ isVisible }: AccountProps) => {
+const Wishlist = ({ isVisible }: WishlistProps) => {
   const { cartItems, removeFromCart } = useCart();
   return (
     <div
@@ -30,7 +30,7 @@ const Account = ({ isVisible }: AccountProps) => {
           </>
         )}
         <p className='text-sm font-light mb-4'>
-          For faster checkout, sign in to your account
+          For faster checkout, sign in to your Wishlist
         </p>
         <Link href='/sign-in' className='underline-hover-link'>
           Sign In
@@ -85,4 +85,4 @@ const Account = ({ isVisible }: AccountProps) => {
   );
 };
 
-export default Account;
+export default Wishlist;
