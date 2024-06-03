@@ -11,7 +11,7 @@ import {
 import { cn } from '@/utils/cn';
 import Link from 'next/link';
 import ShoppingBag from './ShoppingBag';
-import useCart from '@/hooks/useCart';
+import { useCart } from '@/hooks/useCart';
 
 const AccountContent = () => {
   const { cartItems } = useCart();

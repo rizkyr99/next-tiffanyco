@@ -4,8 +4,6 @@ import { MapPin, Truck, ZoomIn } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { PortableText } from '@portabletext/react';
-import imageUrlBuilder from '@sanity/image-url';
-import { client } from '@/sanity/lib/client';
 import AddToCart from './_components/AddToCart';
 import HintLike from './_components/HintLike';
 import { urlFor } from '@/utils/imageUrlBuilder';
