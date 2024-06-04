@@ -5,69 +5,79 @@ const LoveEngagement = () => {
   return (
     <>
       <div>
-        <div className='text-sm font-semibold mb-4'>Shop by Category</div>
+        <div className='text-sm font-semibold mb-4'>Engagement</div>
         <div className='flex flex-col gap-y-6 lg:gap-y-4 px-6 lg:px-0'>
           <Link
-            href='/jewelry/necklaces-and-pendants'
+            href='/engagement/engagement-rings'
             className='text-sm font-light'>
-            Necklaces & Pendants
-          </Link>
-          <Link href='/jewelry/shop/earrings' className='text-sm font-light'>
-            Earrings
-          </Link>
-          <Link href='/jewelry/shop/bracelets' className='text-sm font-light'>
-            Bracelets
-          </Link>
-          <Link href='/jewelry/shop/rings' className='text-sm font-light'>
-            Rings
+            Engagement Rings
           </Link>
           <Link
-            href='/jewelry/shop/fine-watches'
+            href='/engagement/mens-engagement-rings'
             className='text-sm font-light'>
-            Fine Watches
-          </Link>
-          <Link href='/jewelry/shop/brooches' className='text-sm font-light'>
-            Brooches
-          </Link>
-          <Link
-            href='/jewelry/shop/mens-jewelry'
-            className='text-sm font-light'>
-            Men&apos;s Jewelry
+            Men&apos;s Engagement Rings
           </Link>
           <Link
             href='/jewelry'
             className='flex items-center gap-2 text-sm font-semibold'>
-            Explore All Categories
+            Book an Appointment
+            <ChevronRight className='size-4 stroke-1' />
+          </Link>
+        </div>
+        <div className='text-sm font-semibold mb-4'>Wedding</div>
+        <div className='flex flex-col gap-y-6 lg:gap-y-4 px-6 lg:px-0'>
+          <Link
+            href='/engagement/womens-wedding-bands'
+            className='text-sm font-light'>
+            Women&apos;s Wedding Bands
+          </Link>
+          <Link
+            href='/engagement/mens-wedding-bands'
+            className='text-sm font-light'>
+            Men&apos;s Wedding Bands
+          </Link>
+          <Link
+            href='/engagement/wedding-band-sets'
+            className='text-sm font-light'>
+            Wedding Band Sets
+          </Link>
+          <Link href='/engagement/couples-rings' className='text-sm font-light'>
+            Couples&apos; Rings;
+          </Link>
+          <Link
+            href='/engagement'
+            className='flex items-center gap-2 text-sm font-semibold'>
+            Begin Your Journey
             <ChevronRight className='size-4 stroke-1' />
           </Link>
         </div>
       </div>
       <div>
-        <div className='text-sm font-semibold mb-4'>Curated Shops</div>
+        <div className='text-sm font-semibold mb-4'>The Tiffany Difference</div>
         <div className='flex flex-col gap-y-6 lg:gap-y-4 px-6 lg:px-0'>
-          <Link href='/gifts/shop/gifts-for-her' className='text-sm font-light'>
-            Gifts for Her
+          <Link
+            href='/engagement/the-tiffany-guide-to-diamonds'
+            className='text-sm font-light'>
+            The Guides to Diamonds
           </Link>
           <Link
-            href='/jewelry/shop/most-popular-jewelry'
+            href='/engagement/most-popular-jewelry'
             className='text-sm font-light'>
             Most Popular Jewelry
           </Link>
-          <Link href='/jewelry/shop/new-jewelry' className='text-sm font-light'>
+          <Link href='/engagement/new-jewelry' className='text-sm font-light'>
             New Jewelry
           </Link>
-          <Link
-            href='/jewelry/shop/high-jewelry'
-            className='text-sm font-light'>
+          <Link href='/engagement/high-jewelry' className='text-sm font-light'>
             High Jewelry
           </Link>
           <Link
-            href='/jewelry/shop/bold-silver-jewelry'
+            href='/engagement/bold-silver-jewelry'
             className='text-sm font-light'>
             Bold Silver Jewelry
           </Link>
           <Link
-            href='/jewelry/shop/dainty-jewelry'
+            href='/engagement/dainty-jewelry'
             className='text-sm font-light'>
             Dainty Jewelry
           </Link>

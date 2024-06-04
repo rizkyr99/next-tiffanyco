@@ -12,26 +12,22 @@ const Jewelry = () => {
             className='text-sm font-light'>
             Necklaces & Pendants
           </Link>
-          <Link href='/jewelry/shop/earrings' className='text-sm font-light'>
+          <Link href='/jewelry/earrings' className='text-sm font-light'>
             Earrings
           </Link>
-          <Link href='/jewelry/shop/bracelets' className='text-sm font-light'>
+          <Link href='/jewelry/bracelets' className='text-sm font-light'>
             Bracelets
           </Link>
-          <Link href='/jewelry/shop/rings' className='text-sm font-light'>
+          <Link href='/jewelry/rings' className='text-sm font-light'>
             Rings
           </Link>
-          <Link
-            href='/jewelry/shop/fine-watches'
-            className='text-sm font-light'>
+          <Link href='/jewelry/fine-watches' className='text-sm font-light'>
             Fine Watches
           </Link>
-          <Link href='/jewelry/shop/brooches' className='text-sm font-light'>
+          <Link href='/jewelry/brooches' className='text-sm font-light'>
             Brooches
           </Link>
-          <Link
-            href='/jewelry/shop/mens-jewelry'
-            className='text-sm font-light'>
+          <Link href='/jewelry/mens-jewelry' className='text-sm font-light'>
             Men&apos;s Jewelry
           </Link>
           <Link
@@ -45,30 +41,26 @@ const Jewelry = () => {
       <div>
         <div className='text-sm font-semibold mb-4'>Curated Shops</div>
         <div className='flex flex-col gap-y-6 lg:gap-y-4 px-6 lg:px-0'>
-          <Link href='/gifts/shop/gifts-for-her' className='text-sm font-light'>
+          <Link href='/gifts/gifts-for-her' className='text-sm font-light'>
             Gifts for Her
           </Link>
           <Link
-            href='/jewelry/shop/most-popular-jewelry'
+            href='/jewelry/most-popular-jewelry'
             className='text-sm font-light'>
             Most Popular Jewelry
           </Link>
-          <Link href='/jewelry/shop/new-jewelry' className='text-sm font-light'>
+          <Link href='/jewelry/new-jewelry' className='text-sm font-light'>
             New Jewelry
           </Link>
-          <Link
-            href='/jewelry/shop/high-jewelry'
-            className='text-sm font-light'>
+          <Link href='/jewelry/high-jewelry' className='text-sm font-light'>
             High Jewelry
           </Link>
           <Link
-            href='/jewelry/shop/bold-silver-jewelry'
+            href='/jewelry/bold-silver-jewelry'
             className='text-sm font-light'>
             Bold Silver Jewelry
           </Link>
-          <Link
-            href='/jewelry/shop/dainty-jewelry'
-            className='text-sm font-light'>
+          <Link href='/jewelry/dainty-jewelry' className='text-sm font-light'>
             Dainty Jewelry
           </Link>
         </div>
