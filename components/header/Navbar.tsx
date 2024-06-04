@@ -2,7 +2,7 @@
 
 import { menuItems } from '@/constants/menu';
 import Link from 'next/link';
-import useNavMenu from '@/hooks/useNavMenu';
+import { useNavMenu } from '@/hooks/useNavMenu';
 
 const Navbar = () => {
   const { activeItem, setActiveItem, content } = useNavMenu();

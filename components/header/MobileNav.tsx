@@ -17,17 +17,21 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Jewelry from './nav-content/Jewelry';
 import Gifts from './nav-content/Gifts';
-import useNavMenu from '@/hooks/useNavMenu';
+import { useNavMenu } from '@/hooks/useNavMenu';
+import { useMobileNav } from '@/hooks/useMobileNav';
 
 const MobileNav = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, onOpen, onClose } = useMobileNav();
   const { activeItem, setActiveItem, content } = useNavMenu();
+
+  const handleClick = () => {
+    setActiveItem(undefined);
+    onClose();
+  };
 
   return (
     <div>
-      <button
-        onClick={() => setIsOpen(true)}
-        className='lg:hidden cursor-pointer'>
+      <button onClick={onOpen} className='lg:hidden cursor-pointer'>
         <Menu className='size-6 stroke-1' />
       </button>
       <div
@@ -36,9 +40,7 @@ const MobileNav = () => {
           isOpen ? 'translate-x-0' : '-translate-x-full'
         )}>
         <div className='relative h-12 border-t-4 border-primary flex-shrink-0'>
-          <button
-            onClick={() => setIsOpen(false)}
-            className='fixed top-6 right-4 z-50'>
+          <button onClick={onClose} className='fixed top-6 right-4 z-50'>
             <X className='size-7 stroke-1' />
           </button>
         </div>
@@ -86,7 +88,11 @@ const MobileNav = () => {
             </button>
             <span>{activeItem?.label}</span>
           </div>
-          <div className='flex-1 overflow-y-auto p-4 space-y-12'>{content}</div>
+          <div
+            onClick={handleClick}
+            className='flex-1 overflow-y-auto p-4 space-y-12'>
+            {content}
+          </div>
         </div>
       </div>
     </div>
