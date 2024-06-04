@@ -2,7 +2,7 @@
 
 import { menuItems } from '@/constants/menu';
 import Link from 'next/link';
-import useNavMenu from '@/hooks/useNavMenu';
+import { useNavMenu } from '@/hooks/useNavMenu';
 
 const Navbar = () => {
   const { activeItem, setActiveItem, content } = useNavMenu();
@@ -26,7 +26,9 @@ const Navbar = () => {
         ))}
       </ul>
       {activeItem && (
-        <div className='absolute z-50 top-full left-0 w-full bg-white  p-4'>
+        <div
+          onClick={() => setActiveItem(undefined)}
+          className='absolute z-50 top-full left-0 w-full bg-white  p-4'>
           <div className='grid grid-cols-4 gap-8 max-w-screen-xl mx-auto'>
             {content}
           </div>
