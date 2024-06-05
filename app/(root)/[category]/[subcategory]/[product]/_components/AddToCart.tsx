@@ -1,6 +1,6 @@
 'use client';
 
-import useCart from '@/hooks/useCart';
+import { useCart } from '@/hooks/useCart';
 import { Product } from '@/sanity.types';
 import { formatToDollar } from '@/utils/formatToDollar';
 import { ALargeSmall, Minus, Plus } from 'lucide-react';
@@ -12,7 +12,7 @@ interface AddToCartProps {
 
 const AddToCart = ({ product }: AddToCartProps) => {
   const [quantity, setQuantity] = useState(1);
-  const { cartItems, handleAddToCart } = useCart();
+  const { cartItems, addToCart } = useCart();
 
   const handleAdd = () => {
     setQuantity((prev) => (prev += 1));
@@ -42,7 +42,7 @@ const AddToCart = ({ product }: AddToCartProps) => {
         Add Engraving
       </div>
       <button
-        onClick={() => handleAddToCart(product, quantity)}
+        onClick={() => addToCart(product, quantity)}
         className='group relative w-full flex items-center justify-between bg-black text-white border border-black px-6 py-4 text-sm font-semibold hover:bg-primary hover:text-black overflow-hidden'>
         {product.price && formatToDollar(product.price)}
         <span className='absolute top-0 right-0 px-6 py-4 group-hover:-translate-y-full transition-all duration-500 ease-in-out'>

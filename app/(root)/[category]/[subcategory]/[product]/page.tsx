@@ -4,8 +4,6 @@ import { MapPin, Truck, ZoomIn } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { PortableText } from '@portabletext/react';
-import imageUrlBuilder from '@sanity/image-url';
-import { client } from '@/sanity/lib/client';
 import AddToCart from './_components/AddToCart';
 import HintLike from './_components/HintLike';
 import { urlFor } from '@/utils/imageUrlBuilder';
@@ -44,7 +42,7 @@ const ProductPage = async ({ params }: { params: { product: string } }) => {
           </Link>
           <h1 className='font-playfair text-2xl'>{product.name}</h1>
           <p className='font-playfair text-sm'>in Yellow Gold</p>
-          <HintLike productId={product._id} price={product.price} />
+          <HintLike product={product} />
           <div className='flex items-center gap-2 text-xs font-semibold border-t border-black py-3'>
             <Truck className='size-5 stroke-1' />
             Complimentary Shipping & Returns

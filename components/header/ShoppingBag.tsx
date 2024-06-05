@@ -1,6 +1,6 @@
 'use client';
 
-import useCart from '@/hooks/useCart';
+import { useCart } from '@/hooks/useCart';
 import { cn } from '@/utils/cn';
 import { formatToDollar } from '@/utils/formatToDollar';
 import { ChevronRight } from 'lucide-react';
@@ -13,7 +13,7 @@ interface ShoppingBagProps {
 }
 
 const ShoppingBag = ({ isVisible }: ShoppingBagProps) => {
-  const { cartItems, handleRemoveFromCart } = useCart();
+  const { cartItems, removeFromCart } = useCart();
   return (
     <div
       className={cn(
@@ -56,7 +56,7 @@ const ShoppingBag = ({ isVisible }: ShoppingBagProps) => {
                   <div>
                     <p className='text-sm'>Quantity {item.quantity}</p>
                     <button
-                      onClick={() => handleRemoveFromCart(item.productId)}
+                      onClick={() => removeFromCart(item.productId)}
                       className='underline-hover-link'>
                       Remove
                       <ChevronRight className='size-4 stroke-1 text-neutral-500' />
