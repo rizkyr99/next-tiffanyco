@@ -14,7 +14,8 @@ import ShoppingBag from './ShoppingBag';
 import { useCart } from '@/hooks/useCart';
 import { useNavRight } from '@/hooks/useNavRight';
 import Account from './Account';
-import Wishlist from './Wishlist';
+import FavoriteItem from './FavoriteItem';
+import { useFavorite } from '@/hooks/useFavorite';
 
 const AccountContent = () => {
   return (
@@ -35,21 +36,6 @@ const AccountContent = () => {
     </>
   );
 };
-const WishlistContent = () => {
-  return (
-    <>
-      <p className='font-playfair text-3xl mb-4'>Welcome to your Saved Items</p>
-      <p className='font-semibold text-sm mb-16'>
-        View saved favorites, build-your-own charm jewelry designs and sent
-        hints.
-      </p>
-      <Link href='/sign-in' className='underline-hover-link'>
-        Sign In
-        <ChevronRight className='size-4 stroke-1 text-neutral-500' />
-      </Link>
-    </>
-  );
-};
 
 const NavRight = () => {
   const [contentVisible, setContentVisible] = useState<
@@ -57,6 +43,7 @@ const NavRight = () => {
   >();
   const containerRef = useRef<HTMLDivElement>(null);
   const { cartItems } = useCart();
+  const { favoriteItems } = useFavorite();
   const { activeItem, setActiveItem } = useNavRight();
 
   useEffect(() => {
@@ -104,7 +91,12 @@ const NavRight = () => {
         href='/wishlist'
         onMouseEnter={() => setActiveItem('wishlist')}
         className='cursor-pointer'>
-        <Heart className='size-5 stroke-1 hover:stroke-2' />
+        <Heart
+          className={cn(
+            'size-5 stroke-1 hover:stroke-2',
+            favoriteItems.length > 0 && 'fill-primary'
+          )}
+        />
       </Link>
       <Link
         href='/shopping-bag'
@@ -122,6 +114,7 @@ const NavRight = () => {
       </Link>
 
       <div
+        onClick={() => setActiveItem(undefined)}
         className={cn(
           'fixed -z-20 top-0 left-0 w-screen h-screen bg-black/50',
           activeItem ? 'hidden lg:block' : 'hidden'
@@ -144,7 +137,7 @@ const NavRight = () => {
               activeItem ? 'opacity-100' : 'py-0 opacity-0'
             )}>
             <Account isVisible={contentVisible === 'account'} />
-            <Wishlist isVisible={contentVisible === 'wishlist'} />
+            <FavoriteItem isVisible={contentVisible === 'wishlist'} />
             <ShoppingBag isVisible={contentVisible === 'shopping-bag'} />
           </div>
         </div>

@@ -42,7 +42,7 @@ const ProductPage = async ({ params }: { params: { product: string } }) => {
           </Link>
           <h1 className='font-playfair text-2xl'>{product.name}</h1>
           <p className='font-playfair text-sm'>in Yellow Gold</p>
-          <HintLike productId={product._id} price={product.price} />
+          <HintLike product={product} />
           <div className='flex items-center gap-2 text-xs font-semibold border-t border-black py-3'>
             <Truck className='size-5 stroke-1' />
             Complimentary Shipping & Returns
