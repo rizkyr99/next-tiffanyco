@@ -21,3 +21,15 @@ export const getCategorybySlug = async (
     throw new Error('Failed to fetch product. Please try again later.');
   }
 };
+
+export const getSubcategorybySlug = async (
+  subcategorySlug: string
+): Promise<Subcategory | null> => {
+  try {
+    const query = `*[_type=="subcategory" && slug.current=="${subcategorySlug}"][0]`;
+    const subcategory = await client.fetch(query);
+    return subcategory;
+  } catch (error) {
+    throw new Error('Failed to fetch product. Please try again later.');
+  }
+};

@@ -61,3 +61,15 @@ export const getCollections = async (): Promise<CarouselItem[]> => {
     throw new Error('Failed to fetch product. Please try again later.');
   }
 };
+
+export const getProductsbySubcategory = async (
+  subcategoryId: string
+): Promise<Product[]> => {
+  try {
+    const query = `*[_type == "product" && subcategory._ref == "${subcategoryId}"]`;
+    const products = await client.fetch(query);
+    return products;
+  } catch (error) {
+    throw new Error('Failed to fetch product. Please try again later.');
+  }
+};
