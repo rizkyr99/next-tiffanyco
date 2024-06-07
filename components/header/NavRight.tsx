@@ -1,13 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import {
-  Calendar,
-  ChevronRight,
-  Heart,
-  ShoppingBagIcon,
-  User,
-} from 'lucide-react';
+import { Calendar, Heart, ShoppingBagIcon, User } from 'lucide-react';
 import { cn } from '@/utils/cn';
 import Link from 'next/link';
 import ShoppingBag from './ShoppingBag';
@@ -16,26 +10,6 @@ import { useNavRight } from '@/hooks/useNavRight';
 import Account from './Account';
 import FavoriteItem from './FavoriteItem';
 import { useFavorite } from '@/hooks/useFavorite';
-
-const AccountContent = () => {
-  return (
-    <>
-      <p className='font-playfair text-3xl mb-4'>Sign In or Create Account</p>
-      <p className='font-semibold text-sm mb-16'>
-        With an account you can check out faster, view your online order history
-        and access your shopping bag or saved items from any device.
-      </p>
-      <Link href='/sign-up' className='underline-hover-link mb-6'>
-        Create an Account
-        <ChevronRight className='size-4 stroke-1 text-neutral-500' />
-      </Link>
-      <Link href='/sign-in' className='underline-hover-link'>
-        Sign In
-        <ChevronRight className='size-4 stroke-1 text-neutral-500' />
-      </Link>
-    </>
-  );
-};
 
 const NavRight = () => {
   const [contentVisible, setContentVisible] = useState<
