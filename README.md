@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Tiffany & Co Clone
 
-First, run the development server:
+This project is a clone of the Tiffany & Co. e-commerce website, built using Next.js with server actions and Sanity as the headless CMS. It demonstrates web development skills and serves as a portfolio piece, mimicking the core features of the original site, including product listings, a shopping cart, user authentication, and a checkout process.
+
+## Tech Stack
+
+**Client:** Next.js React, TailwindCSS, Zustand, Sanity
+
+**Server:** Node, Express
+
+
+## Features
+
+- Home Page: Displays featured products and promotional banners.
+- Product Listings: Browse products by category, with pagination and filters.
+- Product Details: Detailed view of each product, including images, descriptions, and reviews.
+- Search Functionality: Search for products using keywords.
+- User Authentication: Sign up, log in, and manage user profiles.
+- Shopping Cart: Add, remove, and update products in the shopping cart.
+- Checkout Process: Complete the purchase with order summary and payment integration.
+- Responsive Design: Optimized for various screen sizes (desktop, tablet, mobile)
+
+
+## Demo
+
+https://next-tiffanyco.vercel.app/
+
+
+## Screenshots
+
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
+
+## Run Locally
+
+Clone the project
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  git clone https://github.com/rizkyr99/next-tiffanyco.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Go to the project directory
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+  cd next-tiffanyco
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Install dependencies
 
-## Learn More
+```bash
+  npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+Start the server
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+  npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Environment Variables
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To run this project, you will need to add the following environment variables to your .env file
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+`AUTH_SECRET`
+
+`AUTH_GOOGLE_ID`
+
+`AUTH_GOOGLE_SECRET`
+
