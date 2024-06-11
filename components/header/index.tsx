@@ -1,24 +1,16 @@
-import { useState } from 'react';
 import Image from 'next/image';
-import {
-  Calendar,
-  ConciergeBell,
-  Heart,
-  MapPin,
-  Menu,
-  Search,
-  ShoppingBag,
-  User,
-} from 'lucide-react';
+import { ConciergeBell, MapPin, Search } from 'lucide-react';
 import MobileNav from './MobileNav';
 import TopBar from './TopBar';
 import Navbar from './Navbar';
 import Searchbar from './Searchbar';
 import Link from 'next/link';
-import Account from './Account';
-import NavRight from './NavRight';
 
-const Header = () => {
+import NavRight from './NavRight';
+import { auth } from '@/auth';
+
+const Header = async () => {
+  const session = await auth();
   return (
     <header className='h-fit bg-white flex flex-col p-0'>
       <TopBar />
@@ -45,7 +37,7 @@ const Header = () => {
             className='w-32 md:w-48 object-cover'
           />
         </Link>
-        <NavRight />
+        <NavRight session={session} />
       </div>
       <Searchbar />
       <Navbar />

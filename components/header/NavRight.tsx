@@ -10,8 +10,9 @@ import { useNavRight } from '@/hooks/useNavRight';
 import Account from './Account';
 import FavoriteItem from './FavoriteItem';
 import { useFavorite } from '@/hooks/useFavorite';
+import { Session } from 'next-auth';
 
-const NavRight = () => {
+const NavRight = ({ session }: { session: Session | null }) => {
   const [contentVisible, setContentVisible] = useState<
     'account' | 'wishlist' | 'shopping-bag'
   >();
@@ -110,7 +111,10 @@ const NavRight = () => {
               'h-full w-full px-8 flex flex-col items-start transition-all duration-500 max-h-full',
               activeItem ? 'opacity-100' : 'py-0 opacity-0'
             )}>
-            <Account isVisible={contentVisible === 'account'} />
+            <Account
+              session={session}
+              isVisible={contentVisible === 'account'}
+            />
             <FavoriteItem isVisible={contentVisible === 'wishlist'} />
             <ShoppingBag isVisible={contentVisible === 'shopping-bag'} />
           </div>
